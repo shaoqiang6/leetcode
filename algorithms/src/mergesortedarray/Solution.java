@@ -99,6 +99,24 @@ public class Solution {
 
     }
 
+    public void merge3(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;
+        int j = n - 1;
+
+        for(int k = m + n - 1;k>=0;k--) {
+            if (j < 0 || (i >= 0 && nums1[i] >= nums2[j])) {
+                nums1[k] = nums1[i];
+                i--;
+            } else {
+                nums1[k] = nums2[j];
+                j--;
+            }
+        }
+
+    }
+
+
+
 
     @Test
     public void test() {
@@ -106,7 +124,7 @@ public class Solution {
 //        int[] nums2 = {};
         int[] nums1 = {1,2,3,0,0,0};
         int[] nums2 = {2,5,6};
-        merge2(nums1, 3, nums2, 3);
+        merge3(nums1, 3, nums2, 3);
         for (int i = 0; i < nums1.length; i++) {
             System.out.print(nums1[i] + ",");
         }
